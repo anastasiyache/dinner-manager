@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  gateway-app:
+#    platform: linux/arm64/v8
+    user: 1000:1000
+    image: node:16-alpine
+    working_dir: /app
+    command: 'yarn run start:dev'
+    volumes:
+      - ../../source/gateway:/app
+      - .env:/app/.env
+    ports:
+      - '80:3000'
